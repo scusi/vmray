@@ -7,6 +7,10 @@ vmrayi.go allows to communicate with the API of VmRay.
 VmRay is a 3rd generation malware execution and analysis environment.
 For more Information see: http://www.vmray.com/
 
+This code is based on the old API of VmRay. 
+Since beginning of 2016 or Version 1.9 of VmRay there is a new API which is not yet coverd in this code.
+
+*This code is not final and may be subject to changes.*
 
 Documentation
 =============
