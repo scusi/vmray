@@ -56,6 +56,7 @@ How can i add more root CAs
 Imagen you have more than one instance of vmray and they use certificates 
 signed by different root CAs. Here is what you can do in your go program.
 
+```go
 	// create a new TLS config
 	tlsConf := new(tls.Config)
 	// create a new pool of (CA) certificates
@@ -100,5 +101,5 @@ signed by different root CAs. Here is what you can do in your go program.
  		vmray.SetBasicAuth(os.Getenv("VMRAY_EMAIL"), os.Getenv("VMRAY_PASSWD")),
  		vmray.SetHttpClient(httpclient),
  	)
-
+```
 
