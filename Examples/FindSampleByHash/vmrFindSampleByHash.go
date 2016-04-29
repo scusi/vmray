@@ -1,6 +1,7 @@
 // vmrFindSample.go - can be used to find a sample by its hash on vmray
 //
 // EXAMPLE USAGE:
+//
 //  go run vmrFindSample.go -rsrc="07bd860cf26e56a02bbf1b0ab6874578"
 
 package main
