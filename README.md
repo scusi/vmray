@@ -11,7 +11,9 @@ For more Information see: http://www.vmray.com/
 Documentation
 =============
 
-Documentation is at [![GoDoc](https://godoc.org/github.com/scusi/vmray?status.svg)](https://godoc.org/github.com/scusi/vmray)
+[![GoDoc](https://godoc.org/github.com/scusi/vmray?status.svg)](https://godoc.org/github.com/scusi/vmray)
+
+Documentation is at [GoDoc](https://godoc.org/github.com/scusi/vmray)
 
 Examples
 ========
