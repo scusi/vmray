@@ -89,22 +89,22 @@ func (self *Client) tracef(format string, args ...interface{}) {
 //  )
 //
 func New(options ...OptionFunc) (*Client, error) {
-    // setup and configure a tls cert pool
-    tlsConf := new(tls.Config)
-    rootPEM, err := ioutil.ReadFile("GlobalSignRootCA.pem")
-    if err != nil {
-        return nil, err
-    }
-    certPool := x509.NewCertPool()
-    ok := certPool.AppendCertsFromPEM([]byte(rootPEM))
-    if !ok {
-        err = fmt.Errorf("failed to parse root CA cert")
-        return nil, err
-    }
-    tlsConf.RootCAs = certPool
+	// setup and configure a tls cert pool
+	tlsConf := new(tls.Config)
+	rootPEM, err := ioutil.ReadFile("GlobalSignRootCA.pem")
+	if err != nil {
+		return nil, err
+	}
+	certPool := x509.NewCertPool()
+	ok := certPool.AppendCertsFromPEM([]byte(rootPEM))
+	if !ok {
+		err = fmt.Errorf("failed to parse root CA cert")
+		return nil, err
+	}
+	tlsConf.RootCAs = certPool
 	// set up transport for http
 	tr := &http.Transport{
-        TLSClientConfig: tlsConf,
+		TLSClientConfig: tlsConf,
 	}
 	// setup http client with transport defined above
 	httpclient := &http.Client{Transport: tr}
@@ -142,13 +142,26 @@ func SetHttpClient(httpClient *http.Client) OptionFunc {
 			self.tracef("HttpClient: %+v\n", httpClient)
 
 		} else {
+			// setup and configure a tls cert pool
+			tlsConf := new(tls.Config)
+			rootPEM, err := ioutil.ReadFile("GlobalSignRootCA.pem")
+			if err != nil {
+				return nil, err
+			}
+			certPool := x509.NewCertPool()
+			ok := certPool.AppendCertsFromPEM([]byte(rootPEM))
+			if !ok {
+				err = fmt.Errorf("failed to parse root CA cert")
+				return nil, err
+			}
+			tlsConf.RootCAs = certPool
 			// set up transport for http
 			tr := &http.Transport{
-				// we need to set InsecureSkipVerify because VmRay does not offer a valid certificate
-				TLSClientConfig: &tls.Config{InsecureSkipVerify: true},
+				TLSClientConfig: tlsConf,
 			}
 			// setup http client with transport defined above
 			httpclient := &http.Client{Transport: tr}
+			// Set up the client
 			self.c = httpclient
 		}
 		return nil
@@ -341,8 +354,6 @@ func (self *Client) makeApiUploadRequest(fullurl string, parameters Parameters, 
 	if err != nil {
 		return nil, err
 	}
-	// set Apikey as parameter
-	//parameters["apikey"] = self.apikey
 	// Pipe the file so as not to read it into memory
 	bodyReader, bodyWriter := io.Pipe()
 	// create a multipat/mime writer
@@ -378,8 +389,6 @@ func (self *Client) makeApiUploadRequest(fullurl string, parameters Parameters, 
 		return resp, err
 	}
 	// add the Content-Type we got earlier to the request header.
-	//  some implementations fail if this is not present. (malwr.com, virustotal.com, probably others too)
-	//  this could also be a bug in go actually.
 	postReq.Header.Add("Content-Type", fdct)
 	if self.basicAuthUsername != "" {
 		postReq.SetBasicAuth(self.basicAuthUsername, self.basicAuthPassword)
@@ -410,7 +419,8 @@ type Parameters map[string]string
 // `method` is one of "GET", "POST", or "FILE"
 // `actionurl` is the final path component that specifies the API call
 // `parameters` for request
-// `result` is modified as an output parameter. It must be a pointer to a VT JSON structure.
+// `result` is modified as an output parameter.
+// 'result' must be a pointer to a vmray JSON structure.
 func (self *Client) fetchApiJson(method string, actionurl string, parameters Parameters, result interface{}) (err error) {
 	theurl := self.url + actionurl
 	var resp *http.Response
@@ -433,7 +443,6 @@ func (self *Client) fetchApiJson(method string, actionurl string, parameters Par
 			"type":             "api",
 			"name":             "sample_file",
 		}
-		//resp, err = self.makeApiUploadRequest(theurl, Parameters{}, "file", path)
 		resp, err = self.makeApiUploadRequest(theurl, newparameters, "sample_file", path)
 	}
 	if err != nil {
@@ -476,8 +485,6 @@ type JobInfoDetail struct {
 }
 
 // GetJobsInfo queries pending and in progress jobs from vmray
-// A Result from the API looks like this:
-//  {u'jobs': {u'512670': {u'status': u'inwork', u'slot': 17}, u'512669': {u'status': u'inwork', u'slot': 16}}}
 func (self *Client) GetJobsInfo() (r *JobInfoResult, err error) {
 	r = &JobInfoResult{}
 	parameters := Parameters{"email": self.basicAuthUsername, "password": self.basicAuthPassword, "type": "api"}
@@ -491,8 +498,6 @@ type FindSampleResult struct {
 }
 
 // FindSample finds a Sample in VmRay by its sha1, sha2 or md5 hash
-// Result from API looks like this:
-//  {"sample_id": 446253}
 func (self *Client) FindSample(hash string) (r *FindSampleResult, err error) {
 	r = &FindSampleResult{}
 	parameters := Parameters{"email": self.basicAuthUsername, "password": self.basicAuthPassword, "type": "api", "hash": hash}
