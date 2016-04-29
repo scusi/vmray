@@ -11,13 +11,15 @@ For more Information see: http://www.vmray.com/
 Documentation
 =============
 
-Documentation is at https://godoc.org/github.com/scusi/vmray
+Documentation is at [![GoDoc](https://godoc.org/github.com/scusi/vmray?status.svg)](https://godoc.org/github.com/scusi/vmray)
 
 Examples
 ========
 
 See the Examples directory https://github.com/scusi/vmray/tree/master/Examples
 
+Author
+======
 
 This module has been written by Florian 'scusi' Walther.
 
