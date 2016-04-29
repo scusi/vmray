@@ -14,8 +14,8 @@ How to install a different root CA
 
 In case you want to use the _vmray_ module to connect to your own instance
 useing a different certificate as cloud.vmray.com the most simple approach 
-is to replace the content of _GlobalSignRootCA.pem_ with the cert of your 
-root CA.
+is to replace the content of _GlobalSignRootCA.pem_ with the - PEM 
+encoded - cert of your root CA.
 
 How to skip certificate checking - INSECURE
 ===========================================
@@ -40,8 +40,6 @@ You can archive this by useing code like the below one in your go programm.
 	// Now the vmray client uses your http client for connections. 
 	c, err := vmray.New(
  		vmray.SetUrl("https://myvmray.mydomain.tld/api/"),
- 		//vmray.SetErrorLog(log.New(os.Stderr, "vmray error: ", log.Lshortfile)),
- 		//vmray.SetTraceLog(log.New(os.Stderr, "vmray trace: ", log.Lshortfile)),
  		vmray.SetBasicAuth(os.Getenv("VMRAY_EMAIL"), os.Getenv("VMRAY_PASSWD")),
  		vmray.SetHttpClient(httpclient),
  	)
@@ -89,15 +87,10 @@ signed by different root CAs. Here is what you can do in your go program.
 	// setup http client with transport defined above
 	httpclient := &http.Client{Transport: tr}
 
-    // set up a new http client that uses the afore defined transport
-    httpclient := &http.Client{Transport: tr}
- 	
 	// initialize a new vmray client and pass it your http client
 	// Now the vmray client uses your http client for connections. 
 	c, err := vmray.New(
  		vmray.SetUrl("https://myvmray.mydomain.tld/api/"),
- 		//vmray.SetErrorLog(log.New(os.Stderr, "vmray error: ", log.Lshortfile)),
- 		//vmray.SetTraceLog(log.New(os.Stderr, "vmray trace: ", log.Lshortfile)),
  		vmray.SetBasicAuth(os.Getenv("VMRAY_EMAIL"), os.Getenv("VMRAY_PASSWD")),
  		vmray.SetHttpClient(httpclient),
  	)
