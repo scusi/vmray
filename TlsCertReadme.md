@@ -1,11 +1,11 @@
 TLS Certificate README
 ======================
 
-_vmray_ does check the certificate of the remote host. Therefor it needs to 
-have at the root CA certificate to be able to validate the certificate 
-presented by the remote server.
+the _vmray_ go module, by default does check the certificate of the remote 
+host. Therefor it needs to have at the root CA certificate to be able to 
+validate the certificate presented by the remote server.
 
-In order to archive this the client does load the the root CA certifacte 
+In order to archive this, the client does load the the root CA certifacte 
 from a file called _GlobalSignRootCA.pem_. This certificate is added to
 certifcate pool used internally to validate remote hosts certificates.
 
@@ -16,6 +16,9 @@ In case you want to use the _vmray_ module to connect to your own instance
 useing a different certificate as cloud.vmray.com the most simple approach 
 is to replace the content of _GlobalSignRootCA.pem_ with the - PEM 
 encoded - cert of your root CA.
+
+If you want to add your certificates along with the default one see section 
+_How to dd more root CAs_.
 
 How to skip certificate checking - INSECURE
 ===========================================
@@ -48,8 +51,8 @@ You can archive this by useing code like the below one in your go programm.
 BTW: In a similar fashion you can for example make sure to use a certain proxy 
 to connect to your vmray instance.
 
-How can i add more root CAs
-===========================
+How to dd more root CAs
+=======================
 
 Imagen you have more than one instance of vmray and they use certificates 
 signed by different root CAs. Here is what you can do in your go program.
@@ -66,7 +69,7 @@ signed by different root CAs. Here is what you can do in your go program.
 	// for each of your root CA certs do
 	for _, fileName := range myRootCerts {
 			// setup and configure a tls cert pool
-			rootPEM, err := ioutil.ReadFile("GlobalSignRootCA.pem")
+			rootPEM, err := ioutil.ReadFile(fileName)
 			if err != nil {
 					return nil, err
 			}
