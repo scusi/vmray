@@ -19,13 +19,15 @@ Documentation
 
 Documentation is at [GoDoc](https://godoc.org/github.com/scusi/vmray)
 
+For TLS certificate issues please see [TlsCertReadme.md](https://github.com/scusi/vmray/blob/master/TlsCertReadme.md)
+
 Examples
 ========
 
-See the Examples directory https://github.com/scusi/vmray/tree/master/Examples
+See the [Examples directory](https://github.com/scusi/vmray/tree/master/Examples)
 
 Author
 ======
 
-This module has been written by Florian 'scusi' Walther.
+This module has been written by _Florian 'scusi' Walther_.
 
