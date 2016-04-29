@@ -1,3 +1,7 @@
+// vmrGetAnalysisInfo.go - take a sample_id and returns information about analysis available for that sample
+//
+//  vmrGetAnalysisInfo -sample_id 12345
+//
 package main
 
 import (
