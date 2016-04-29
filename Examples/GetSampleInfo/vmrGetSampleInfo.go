@@ -1,5 +1,9 @@
 // vmrGetSampleInfo.go - takes a vmray sampleId, provides Information about the sample
 //
+// Usage:
+//
+//  vmrGetSampleInfo -sample_id 12345
+//
 package main
 
 import (
