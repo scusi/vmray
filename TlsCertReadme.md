@@ -18,7 +18,7 @@ is to replace the content of _GlobalSignRootCA.pem_ with the - PEM
 encoded - cert of your root CA.
 
 If you want to add your certificates along with the default one see section 
-_How to dd more root CAs_.
+_How to add more root CAs_.
 
 How to skip certificate checking - INSECURE
 ===========================================
@@ -51,7 +51,7 @@ You can archive this by useing code like the below one in your go programm.
 BTW: In a similar fashion you can for example make sure to use a certain proxy 
 to connect to your vmray instance.
 
-How to dd more root CAs
+How to add more root CAs
 =======================
 
 Imagen you have more than one instance of vmray and they use certificates 
