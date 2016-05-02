@@ -54,7 +54,7 @@ to connect to your vmray instance.
 How to add more root CAs
 =======================
 
-Imagen you have more than one instance of vmray and they use certificates 
+Imagin you have more than one instance of vmray and they use certificates 
 signed by different root CAs. Here is what you can do in your go program.
 
 ```go
