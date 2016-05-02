@@ -1,3 +1,7 @@
+// vmrGetJobsInfo.go - provides information about running jobs on vmray
+//
+//  go run vmrGetJobsInfo.go
+//
 package main
 
 import (
