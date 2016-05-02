@@ -21,7 +21,7 @@ func main() {
 	// setup a new vmray client
 	c, err := vmray.New(
 		vmray.SetErrorLog(log.New(os.Stderr, "vmray error: ", log.Lshortfile)),
-		vmray.SetTraceLog(log.New(os.Stderr, "vmray trace: ", log.Lshortfile)),
+		//vmray.SetTraceLog(log.New(os.Stderr, "vmray trace: ", log.Lshortfile)),
 		vmray.SetBasicAuth(os.Getenv("VMRAY_EMAIL"), os.Getenv("VMRAY_PASSWD")),
 	)
 	r, err := c.UploadSample(fileName)
