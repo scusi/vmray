@@ -22,4 +22,4 @@ So before starting any example you shoud make sure to set these environment vari
  export VMRAY_PASSWD="myVerySecretPassword"
 ```
 
-In order to those variables permanetly you can add the two above lines to your ```~/.profile``` file.
+In order to add those variables permanetly to your environment, you can add the two above lines to your ```~/.profile``` file.
