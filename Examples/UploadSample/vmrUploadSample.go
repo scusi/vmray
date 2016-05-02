@@ -1,4 +1,9 @@
-// vmray upload sample
+// vmrUploadSample.go - uploads a file for analysis on vmray
+//
+//  go run vmrUploadSample.go -f <yourSampleFile.ext>
+//
+// Above example shows how to upload a given file to vmray useing vmrUploadSample.go
+//
 package main
 
 import (
