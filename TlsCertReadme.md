@@ -6,7 +6,7 @@ host. Therefor it needs to have at the root CA certificate to be able to
 validate the certificate presented by the remote server.
 
 In order to archive this, the client does load the the root CA certifacte 
-from a file called _GlobalSignRootCA.pem_. This certificate is added to
+from a constant called _GlobalSignRootCA_. This certificate is added to
 certifcate pool used internally to validate remote hosts certificates.
 
 How to install a different root CA
@@ -14,7 +14,7 @@ How to install a different root CA
 
 In case you want to use the _vmray_ module to connect to your own instance
 useing a different certificate as cloud.vmray.com the most simple approach 
-is to replace the content of _GlobalSignRootCA.pem_ with the - PEM 
+is to replace the content of _GlobalSignRootCA_ constant with the - PEM 
 encoded - cert of your root CA.
 
 If you want to add your certificates along with the default one see section 
