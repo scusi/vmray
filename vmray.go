@@ -146,13 +146,13 @@ func SetHttpClient(httpClient *http.Client) OptionFunc {
 			tlsConf := new(tls.Config)
 			rootPEM, err := ioutil.ReadFile("GlobalSignRootCA.pem")
 			if err != nil {
-				return nil, err
+				return err
 			}
 			certPool := x509.NewCertPool()
 			ok := certPool.AppendCertsFromPEM([]byte(rootPEM))
 			if !ok {
 				err = fmt.Errorf("failed to parse root CA cert")
-				return nil, err
+				return err
 			}
 			tlsConf.RootCAs = certPool
 			// set up transport for http
