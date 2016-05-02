@@ -1,7 +1,7 @@
 // vmrDoanloadAnalysesByHash.go - downloads all vmray analyses for a given sample, identified by its hash.
 // file hash can be md5, sha1 or sha2 checksum of sample
 //
-//  vmrDownloadAnaysesByHash.go -hash d41d8cd98f00b204e9800998ecf8427e
+//  go run vmrDownloadAnaysesByHash.go -hash d41d8cd98f00b204e9800998ecf8427e
 //
 package main
 
