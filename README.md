@@ -9,7 +9,7 @@ For more Information see [VmRay Website](http://www.vmray.com/)
 ## Disclaimers
 
 This code is based on the old API of VmRay. 
-Since beginning of 2016 or version 1.9 of VmRay there is a new API which is not yet coverd in this code. See [Issue #1](https://github.com/scusi/vmray/issues/1)
+Since beginning of 2016 or version 1.9 of VmRay there is a new API which is not yet covered in this code. See [Issue #1](https://github.com/scusi/vmray/issues/1)
 
 ## Usage
 
