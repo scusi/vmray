@@ -11,8 +11,6 @@ For more Information see [VmRay Website](http://www.vmray.com/)
 This code is based on the old API of VmRay. 
 Since beginning of 2016 or version 1.9 of VmRay there is a new API which is not yet coverd in this code. See [Issue #1](https://github.com/scusi/vmray/issues/1)
 
-*This code is not final and may be subject to changes.*
-
 ## Usage
 
 Go and get the code
@@ -21,10 +19,29 @@ Go and get the code
 go get github.com/scusi/vmray
 ```
 
-Within your program just import the library
+Here is a short and very simple example how to use this module to upload a file to an vmray instance via tha (old) API.
 
 ```go
-import("github.com/scusi/vmray")
+// vmray simple upload example
+package main
+
+import(
+    "os"
+	"fmt"
+    "github.com/scusi/vmray"
+)
+
+func main() {
+    fileName := os.Args[1]
+    client, err := vmray.New(
+	    vmray.SetBasicAuth(os.Getenv("VMRAY_EMAIL"), os.Getenv("VMRAY_PASSWD"))
+	)
+	result, err := client.UploadSample(fileName)
+	if err != nil {
+		panic(err)
+	}
+	fmt.Printf("%s\n", result)
+}
 ```
 
 ## Documentation
@@ -37,7 +54,7 @@ For TLS certificate issues please see [TlsCertReadme.md](https://github.com/scus
 
 ## Examples
 
-Please see the [Examples directory](https://github.com/scusi/vmray/tree/master/Examples)
+Please see the [Examples directory](https://github.com/scusi/vmray/tree/master/Examples) for some examples how to use this module and it's features.
 
 ## Commits
 
