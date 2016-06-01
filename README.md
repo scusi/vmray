@@ -19,7 +19,7 @@ Go and get the code
 go get github.com/scusi/vmray
 ```
 
-Here is a short and very simple example how to use this module to upload a file to an vmray instance via tha (old) API.
+Here is a short and very simple example how to use this module to upload a file to an vmray instance via the (old) API.
 
 ```go
 // vmray simple upload example
