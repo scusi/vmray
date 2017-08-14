@@ -166,7 +166,7 @@ func SetHttpClient(httpClient *http.Client) OptionFunc {
 			certPool := x509.NewCertPool()
 			ok := certPool.AppendCertsFromPEM([]byte(GlobalSignRootCA))
 			if !ok {
-				err = fmt.Errorf("failed to parse root CA cert")
+				err := fmt.Errorf("failed to parse root CA cert")
 				return err
 			}
 			tlsConf.RootCAs = certPool
